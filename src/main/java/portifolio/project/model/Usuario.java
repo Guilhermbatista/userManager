@@ -10,7 +10,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-
 @Data
 @Entity
 @Table(name = "usuarios")
@@ -20,7 +19,7 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	
+
 	@NotBlank(message = "O nome é Obrigatorio")
 	@Column(name = "nome", length = 200, nullable = false)
 	private String nome;
@@ -35,4 +34,5 @@ public class Usuario {
 	@Column(name = "telefone", length = 15, nullable = false)
 	private String telefone;
 
+	
 }

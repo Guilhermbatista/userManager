@@ -2,6 +2,7 @@ package portifolio.project.Repository;
 
 import java.util.List;
 
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -19,5 +20,7 @@ public class IUsuarioImpl implements IUsuarioCustom {
 		query.setParameter("nome", "%" + nome + "%");
 		return query.getResultList();
 	}
+
+	
 
 }

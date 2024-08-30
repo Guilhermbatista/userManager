@@ -7,30 +7,29 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import portifolio.project.Repository.IUsuario;
+import portifolio.project.Repository.UsuarioRepository;
 import portifolio.project.model.Usuario;
 
 @Service
 public class UsuarioService {
 
-	private IUsuario repository;
+	private UsuarioRepository repository;
 	private PasswordEncoder passwordEncoder;
 
-	public UsuarioService(IUsuario repository) {
+	public UsuarioService(UsuarioRepository repository) {
 		super();
 		this.repository = repository;
 		this.passwordEncoder = new BCryptPasswordEncoder();
 	}
 
 	public List<Usuario> ListUsuarios() {
-		List<Usuario> list = repository.findAll();
-		return list;
+		return repository.findAll();
 	}
 
 	public List<Usuario> buscarUsuarioPorNome(String nome) {
 		return repository.buscarUsuariosCustomizado(nome);
 	}
-
+	
 	public Optional<Usuario> UsuarioId(Integer id) {
 		return repository.findById(id);
 	}
