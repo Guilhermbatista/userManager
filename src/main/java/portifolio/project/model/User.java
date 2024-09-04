@@ -6,9 +6,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import portifolio.project.DTO.RegisterRequestDTO;
 
 @Entity
 @Table(name = "users")
@@ -16,6 +18,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
@@ -23,4 +26,10 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
+
+	public User(RegisterRequestDTO data) {
+		this.name = data.nome();
+		this.email = data.email();
+		this.password = data.senha();
+	}
 }
