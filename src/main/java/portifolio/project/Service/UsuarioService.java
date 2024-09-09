@@ -17,7 +17,6 @@ public class UsuarioService {
 	private PasswordEncoder passwordEncoder;
 
 	public UsuarioService(UsuarioRepository repository) {
-		super();
 		this.repository = repository;
 		this.passwordEncoder = new BCryptPasswordEncoder();
 	}
@@ -27,7 +26,7 @@ public class UsuarioService {
 	}
 
 	public List<Usuario> buscarUsuarioPorNome(String nome) {
-		return repository.buscarUsuariosCustomizado(nome);
+		return repository.findByNome(nome);
 	}
 	
 	public Optional<Usuario> UsuarioId(Integer id) {
